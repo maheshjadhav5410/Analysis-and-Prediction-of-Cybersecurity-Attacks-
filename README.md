@@ -111,15 +111,17 @@ streamlit run app.py
 
 📁 Folder Structure (Example)
 cyberthreat/
-├── ml_model/
+├── analysis/
 │   ├── model.pkl
 │   ├── preprocessing.py
 │   └── app.py  # Streamlit
-├── predictor_app/
+├── cyberthreat/
 │   ├── models.py
 │   ├── views.py
 │   ├── urls.py
 │   └── templates/
+├── dataset
+    ├── data
 ├── db.sqlite3
 ├── manage.py
 └── requirements.txt
