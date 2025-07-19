@@ -1,0 +1,58 @@
+{% extends 'analysis/base.html' %}
+
+{% block content %}
+<h1>Analysis Page</h1>
+
+<h2>Attack Types Distribution</h2>
+<div class="text-center">
+    <img src="data:image/png;base64,{{ image_base64 }}" alt="Attack Types Distribution" class="img-fluid rounded">
+</div>
+
+<h2>Attack Counts</h2>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Attack Type</th>
+            <th>Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for attack, count in attack_counts.items %}
+        <tr>
+            <td>{{ attack }}</td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Attack Frequency Over Time</h2>
+<div class="text-center">
+    <img src="data:image/png;base64,{{ time_series_base64 }}" alt="Attack Frequency Over Time" class="img-fluid rounded">
+</div>
+
+<h2>Heatmap of Attacks by IP</h2>
+<div class="text-center">
+    <img src="data:image/png;base64,{{ heatmap_base64 }}" alt="Heatmap of Attacks by IP" class="img-fluid rounded">
+</div>
+
+<h2>Common Attack Sources and Destinations</h2>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>IP Address</th>
+            <th>Count</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ip, count, type in common_ips %}
+        <tr>
+            <td>{{ ip }}</td>
+            <td>{{ count }}</td>
+            <td>{{ type }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'analysis/base.html' %}
+
+{% block content %}
+<h1>Prediction</h1>
+<p>Enter the details below to predict the severity level and attack type of a potential threat.</p>
+
+<form method="post" class="mt-4">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.packet_length.label_tag }}
+        {{ form.packet_length }}
+    </div>
+    <div class="form-group">
+        {{ form.anomaly_scores.label_tag }}
+        {{ form.anomaly_scores }}
+    </div>
+    <div class="form-group">
+        {{ form.source_ip.label_tag }}
+        {{ form.source_ip }}
+    </div>
+    <div class="form-group">
+        {{ form.destination_ip.label_tag }}
+        {{ form.destination_ip }}
+    </div>
+    <button type="submit" class="btn btn-primary">Predict</button>
+</form>
+
+{% if severity_level is not None %}
+    <h2 class="mt-4">Prediction Results</h2>
+    <div class="alert alert-info">
+        <p><strong>Severity Level:</strong> {{ severity_level }}</p>
+        <p><strong>Severity Probability:</strong> {{ severity_proba }}</p>
+    </div>
+    <div class="alert alert-info">
+        <p><strong>Attack Type:</strong> {{ attack_type }}</p>
+        <p><strong>Attack Probability:</strong> {{ attack_proba }}</p>
+    </div>
+{% endif %}
+{% endblock %}

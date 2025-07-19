@@ -1,0 +1,12 @@
+{% extends 'analysis/base.html' %}
+
+{% block content %}
+<h2>Model Accuracy Score</h2>
+{% if accuracy %}
+<p>The accuracy of the model is: <strong>{{ accuracy }}</strong></p>
+{% elif error %}
+<p>Error: {{ error }}</p>
+{% else %}
+<p>No accuracy score available.</p>
+{% endif %}
+{% endblock %}
